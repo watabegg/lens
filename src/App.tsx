@@ -7,6 +7,8 @@ import WipePanel from "./components/WipePanel";
 import ControlPanel from "./components/ControlPanel";
 import MobileTabBar from "./components/MobileTabBar";
 
+const viewModeLabel = (mode: ViewMode) => (mode === "simple" ? "シンプル" : "詳細");
+
 function App() {
   const [state, setState] = useState<AppState>(DEFAULT_STATE);
   const { lensResult, imageDescriptor } = useLensPhysics(state);
@@ -31,22 +33,21 @@ function App() {
     <div className="app-shell" data-active-tab={state.activeTab}>
       <header className="app-header">
         <div>
-          <p className="app-eyebrow">Convex Lens Lab</p>
-          <h1 className="app-title">Lens Lab</h1>
+          <p className="app-eyebrow">凸レンズ実験</p>
+          <h1 className="app-title">凸レンズラボ</h1>
           <p className="app-subtitle">
-            Control object distance, screen distance, and focal length to see
-            how images form.
+            物体距離・スクリーン距離・焦点距離を動かして像の変化を観察しよう。
           </p>
         </div>
         <div className="app-status">
           <div className="status-item">
-            <span className="status-label">Mode</span>
-            <span className="status-value">{state.viewMode}</span>
+            <span className="status-label">モード</span>
+            <span className="status-value">{viewModeLabel(state.viewMode)}</span>
           </div>
           <div className="status-item">
-            <span className="status-label">Screen</span>
+            <span className="status-label">ピント</span>
             <span className="status-value">
-              {lensResult.isImageOnScreen ? "In focus" : "Out of focus"}
+              {lensResult.isImageOnScreen ? "合焦" : "ぼけ"}
             </span>
           </div>
         </div>
@@ -55,13 +56,11 @@ function App() {
       <main className="app-main">
         <section
           className="panel panel--experiment"
-          aria-label="Experiment canvas"
+          aria-label="実験図"
         >
           <div className="panel-header">
-            <h2>Experiment</h2>
-            <span className="panel-meta">
-              SVG view, lens centered, cm scale
-            </span>
+            <h2>実験図</h2>
+            <span className="panel-meta">SVG・レンズ中心・cmスケール</span>
           </div>
           <ExperimentCanvas
             state={state}
@@ -71,10 +70,10 @@ function App() {
           />
         </section>
 
-        <section className="panel panel--control" aria-label="Controls">
+        <section className="panel panel--control" aria-label="操作">
           <div className="panel-header">
-            <h2>Controls</h2>
-            <span className="panel-meta">Adjust distances and view</span>
+            <h2>操作</h2>
+            <span className="panel-meta">距離と表示を調整</span>
           </div>
           <ControlPanel
             state={state}
@@ -86,10 +85,10 @@ function App() {
         </section>
       </main>
 
-      <section className="panel panel--image" aria-label="Image analysis">
+      <section className="panel panel--image" aria-label="像の観察">
         <div className="panel-header">
-          <h2>Image Study</h2>
-          <span className="panel-meta">Original vs screen vs observed</span>
+          <h2>像の観察</h2>
+          <span className="panel-meta">元の物体・スクリーン・観察像</span>
         </div>
         <WipePanel
           state={state}

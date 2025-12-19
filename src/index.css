@@ -1,22 +1,25 @@
 :root {
   font-family: "BIZ UDPGothic", "Hiragino Sans", "Noto Sans JP", "IBM Plex Sans", sans-serif;
-  line-height: 1.5;
+  line-height: 1.6;
   font-weight: 400;
   color-scheme: light;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --paper: #f6f3ee;
-  --panel: #fff9ef;
-  --ink: #1f1b16;
-  --muted: #6c6257;
-  --line: #d5cec0;
-  --accent: #1f6f5b;
-  --accent-strong: #0f4f3f;
-  --signal: #c24d3e;
-  --signal-soft: #f0d9d2;
-  --shadow: rgba(31, 27, 22, 0.18);
+  --paper: #ffffff;
+  --panel: #ffffff;
+  --ink: #1c1c1c;
+  --muted: #6f6f6f;
+  --line: #e4e4e4;
+  --accent: #1f6aa5;
+  --accent-strong: #154e7a;
+  --signal: #c44a4a;
+  --signal-soft: #fde9e9;
+  --shadow: rgba(28, 28, 28, 0.12);
+  --radius-lg: 18px;
+  --radius-md: 14px;
+  --radius-sm: 10px;
 }
 
 * {
@@ -27,7 +30,6 @@ body {
   margin: 0;
   min-height: 100vh;
   background-color: var(--paper);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Ccircle cx='2' cy='2' r='1.2' fill='%23d5cec0'/%3E%3Ccircle cx='22' cy='22' r='1.2' fill='%23d5cec0'/%3E%3C/svg%3E");
   color: var(--ink);
 }
 
@@ -53,20 +55,22 @@ textarea {
 
 button {
   cursor: pointer;
-  border: 2px solid var(--ink);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
   background: var(--panel);
   padding: 0.6rem 1rem;
   letter-spacing: 0.02em;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 button:hover {
   transform: translateY(-1px);
-  box-shadow: 4px 4px 0 var(--shadow);
+  border-color: #c9c9c9;
+  box-shadow: 0 8px 18px var(--shadow);
 }
 
 button:focus-visible {
-  outline: 3px solid var(--accent);
+  outline: 3px solid rgba(31, 106, 165, 0.4);
   outline-offset: 2px;
 }
 

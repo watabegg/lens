@@ -24,36 +24,34 @@
   justify-content: space-between;
   align-items: flex-end;
   gap: 24px;
-  border-bottom: 2px solid var(--ink);
+  border-bottom: 1px solid var(--line);
   padding-bottom: 16px;
 }
 
 .app-eyebrow {
   margin: 0;
-  text-transform: uppercase;
-  letter-spacing: 0.24em;
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   color: var(--muted);
+  letter-spacing: 0.18em;
 }
 
 .app-title {
-  margin: 6px 0;
+  margin: 6px 0 8px;
   font-family: "IBM Plex Serif", "Yu Mincho", serif;
-  font-size: 2.6rem;
+  font-size: 2.4rem;
 }
 
 .app-subtitle {
   margin: 0;
-  max-width: 420px;
+  max-width: 460px;
   color: var(--muted);
 }
 
 .app-status {
   display: grid;
   gap: 8px;
-  text-transform: uppercase;
-  font-size: 0.7rem;
-  letter-spacing: 0.18em;
+  font-size: 0.82rem;
+  color: var(--muted);
 }
 
 .status-item {
@@ -76,9 +74,10 @@
 
 .panel {
   background: var(--panel);
-  border: 2px solid var(--ink);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
   padding: 20px;
-  box-shadow: 8px 8px 0 var(--shadow);
+  box-shadow: 0 14px 30px var(--shadow);
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -94,7 +93,7 @@
 
 .panel-header h2 {
   margin: 0;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }
 
 .panel-meta {
@@ -114,8 +113,9 @@
 }
 
 .canvas-wrap {
-  background: #fdfbf6;
-  border: 2px solid var(--line);
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
   padding: 12px;
 }
 
@@ -136,7 +136,7 @@
 }
 
 .lens-outline {
-  fill: #f2ebe2;
+  fill: #f7f7f7;
   stroke: var(--ink);
   stroke-width: 2;
 }
@@ -174,7 +174,7 @@
 
 .ray {
   fill: none;
-  stroke: #40556b;
+  stroke: #3f4f63;
   stroke-width: 2;
 }
 
@@ -201,12 +201,13 @@
 }
 
 .mode-toggle button {
-  background: #f4efe6;
+  background: #f8f8f8;
 }
 
 .mode-toggle button.active {
-  background: var(--ink);
-  color: #fff;
+  background: var(--accent);
+  color: #ffffff;
+  border-color: transparent;
 }
 
 .range-field {
@@ -251,24 +252,25 @@
   background: var(--accent);
   color: #fff;
   border-style: solid;
+  border-color: transparent;
 }
 
 .formula-card {
-  border: 2px solid var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
   padding: 12px;
-  background: #f8f2e7;
+  background: #ffffff;
 }
 
 .formula-title {
-  text-transform: uppercase;
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
   margin-bottom: 6px;
   color: var(--muted);
 }
 
 .formula-equation {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 700;
   margin-bottom: 8px;
 }
@@ -293,6 +295,7 @@
 .reset {
   background: var(--signal);
   color: #fff;
+  border-color: transparent;
 }
 
 .wipe-grid {
@@ -302,18 +305,18 @@
 }
 
 .wipe-card {
-  border: 2px solid var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
   padding: 16px;
-  background: #fffdf8;
+  background: #ffffff;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
 .wipe-title {
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
   font-size: 0.7rem;
+  letter-spacing: 0.18em;
   color: var(--muted);
 }
 
@@ -329,6 +332,7 @@
   height: 40px;
   background: var(--accent);
   position: relative;
+  border-radius: 6px;
 }
 
 .mini-arrow::after {
@@ -346,21 +350,22 @@
 .focus-pill,
 .image-pill {
   padding: 6px 12px;
-  border: 2px solid var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 999px;
   text-transform: uppercase;
   font-size: 0.7rem;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.16em;
 }
 
 .focus-pill--good {
-  background: #d6efe6;
-  border-color: var(--accent);
+  background: #e8f5ff;
+  border-color: #b9d6ef;
   color: var(--accent-strong);
 }
 
 .focus-pill--bad {
   background: var(--signal-soft);
-  border-color: var(--signal);
+  border-color: #efb3b3;
   color: var(--signal);
 }
 
@@ -382,12 +387,12 @@
   flex: 1;
   border-radius: 0;
   border: 0;
-  border-top: 2px solid var(--ink);
-  background: #f6f0e7;
+  border-top: 1px solid var(--line);
+  background: #f7f7f7;
 }
 
 .mobile-tabbar button.active {
-  background: var(--ink);
+  background: var(--accent);
   color: #fff;
 }
 
@@ -423,9 +428,9 @@
     left: 0;
     width: 100%;
     display: flex;
-    background: #f6f0e7;
-    border-top: 2px solid var(--ink);
-    box-shadow: 0 -6px 0 var(--shadow);
+    background: #ffffff;
+    border-top: 1px solid var(--line);
+    box-shadow: 0 -10px 24px var(--shadow);
   }
 
   .app-shell {

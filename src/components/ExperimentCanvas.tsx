@@ -86,7 +86,7 @@ export default function ExperimentCanvas({
         className="experiment-canvas"
         viewBox={`0 0 ${VIEWBOX.width} ${VIEWBOX.height}`}
         role="img"
-        aria-label="Convex lens experiment diagram"
+        aria-label="凸レンズの実験図"
       >
         <line
           className="axis-line"
@@ -104,7 +104,7 @@ export default function ExperimentCanvas({
           y2={scale.axisY + lensHalfHeight}
         />
         <text className="label" x={layout.screenX} y={scale.axisY + lensHalfHeight + 18} textAnchor="middle">
-          Screen
+          スクリーン
         </text>
 
         <line
@@ -119,16 +119,16 @@ export default function ExperimentCanvas({
           d={`M ${layout.lensX - 18} ${scale.axisY - lensHalfHeight} Q ${layout.lensX} ${scale.axisY - lensHalfHeight - 18} ${layout.lensX + 18} ${scale.axisY - lensHalfHeight} L ${layout.lensX + 18} ${scale.axisY + lensHalfHeight} Q ${layout.lensX} ${scale.axisY + lensHalfHeight + 18} ${layout.lensX - 18} ${scale.axisY + lensHalfHeight} Z`}
         />
         <text className="label" x={layout.lensX} y={scale.axisY - lensHalfHeight - 12} textAnchor="middle">
-          Lens
+          レンズ
         </text>
 
         <circle className="focal-point" cx={leftFocalX} cy={scale.axisY} r={4} />
         <circle className="focal-point" cx={rightFocalX} cy={scale.axisY} r={4} />
         <text className="label" x={leftFocalX} y={scale.axisY + 20} textAnchor="middle">
-          F
+          焦点
         </text>
         <text className="label" x={rightFocalX} y={scale.axisY + 20} textAnchor="middle">
-          F
+          焦点
         </text>
 
         <line
@@ -143,7 +143,7 @@ export default function ExperimentCanvas({
           points={arrowHeadPoints(layout.objectX, scale.axisY - objectHeightPx, 1)}
         />
         <text className="label" x={layout.objectX} y={scale.axisY + 20} textAnchor="middle">
-          Object
+          物体
         </text>
 
         {lensResult.imageDistanceCm !== null && (
@@ -167,7 +167,7 @@ export default function ExperimentCanvas({
               y={imageTopY + (imageTopY < scale.axisY ? -14 : 24)}
               textAnchor="middle"
             >
-              Image
+              像
             </text>
           </g>
         )}
@@ -200,7 +200,7 @@ export default function ExperimentCanvas({
               y={scale.axisY + lensHalfHeight + 36}
               textAnchor="middle"
             >
-              screen = {formatValue(state.screenDistanceCm)} cm
+              スクリーン = {formatValue(state.screenDistanceCm)} cm
             </text>
             <text
               className="detail-text"

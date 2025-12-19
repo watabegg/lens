@@ -67,45 +67,45 @@ export default function ControlPanel({
           className={state.viewMode === "simple" ? "active" : ""}
           onClick={() => onViewModeChange("simple")}
         >
-          Simple
+          シンプル
         </button>
         <button
           type="button"
           className={state.viewMode === "detail" ? "active" : ""}
           onClick={() => onViewModeChange("detail")}
         >
-          Detail
+          詳細
         </button>
       </div>
 
       <RangeField
-        label="Object distance (a)"
+        label="物体距離 (a)"
         value={state.objectDistanceCm}
         min={5}
         max={50}
         step={0.5}
         unit="cm"
-        hint="Object to lens"
+        hint="物体からレンズ"
         onChange={(value) => onChange({ objectDistanceCm: value })}
       />
       <RangeField
-        label="Screen distance"
+        label="スクリーン距離"
         value={state.screenDistanceCm}
         min={5}
         max={50}
         step={0.5}
         unit="cm"
-        hint="Screen to lens"
+        hint="スクリーンからレンズ"
         onChange={(value) => onChange({ screenDistanceCm: value })}
       />
       <RangeField
-        label="Focal length (f)"
+        label="焦点距離 (f)"
         value={state.focalLengthCm}
         min={5}
         max={30}
         step={0.5}
         unit="cm"
-        hint="Convex lens"
+        hint="凸レンズ"
         onChange={(value) => onChange({ focalLengthCm: value })}
       />
 
@@ -115,7 +115,7 @@ export default function ControlPanel({
           className={state.showRays ? "toggle active" : "toggle"}
           onClick={() => onChange({ showRays: !state.showRays })}
         >
-          {state.showRays ? "Hide rays" : "Show rays"}
+          {state.showRays ? "主光線を隠す" : "主光線を表示"}
         </button>
       </div>
 
@@ -127,7 +127,7 @@ export default function ControlPanel({
 
       <div className="reset-row">
         <button type="button" className="reset" onClick={onReset}>
-          Reset
+          リセット
         </button>
       </div>
     </div>

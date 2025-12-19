@@ -6,14 +6,14 @@ interface MobileTabBarProps {
 }
 
 const tabs: { id: MobileTab; label: string }[] = [
-  { id: "experiment", label: "Experiment" },
-  { id: "image", label: "Image" },
-  { id: "control", label: "Controls" },
+  { id: "experiment", label: "実験" },
+  { id: "image", label: "像" },
+  { id: "control", label: "操作" },
 ];
 
 export default function MobileTabBar({ activeTab, onChange }: MobileTabBarProps) {
   return (
-    <div className="mobile-tabbar" role="tablist" aria-label="Mobile tabs">
+    <div className="mobile-tabbar" role="tablist" aria-label="モバイルタブ">
       {tabs.map((tab) => (
         <button
           key={tab.id}
