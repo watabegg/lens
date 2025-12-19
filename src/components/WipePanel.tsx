@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import type { AppState } from "../state";
 import type { ImageDescriptor, LensResult } from "../physics/lens";
+import MyakuMyaku from "../assets/myaku.png";
 
 interface WipePanelProps {
   state: AppState;
@@ -156,6 +157,8 @@ interface GlyphProps {
   ghost?: boolean;
 }
 
+const GLYPH_SIZE = 72;
+
 function Glyph({ scale, flipX = false, flipY = false, variant, dashed, ghost }: GlyphProps) {
   const className = [
     "glyph",
@@ -166,47 +169,29 @@ function Glyph({ scale, flipX = false, flipY = false, variant, dashed, ghost }: 
     .filter(Boolean)
     .join(" ");
 
+  const half = GLYPH_SIZE / 2;
+
   return (
     <g className={className} transform={buildTransform(scale, flipX, flipY)}>
-      <rect
-        className="glyph-body"
-        x={-12}
-        y={-20}
-        width={24}
-        height={40}
-        rx={4}
-        vectorEffect="non-scaling-stroke"
+      <image
+        href={MyakuMyaku}
+        x={-half}
+        y={-half}
+        width={GLYPH_SIZE}
+        height={GLYPH_SIZE}
+        className="glyph-image-el"
+        preserveAspectRatio="xMidYMid meet"
       />
-      <rect
-        className="glyph-wing"
-        x={10}
-        y={-12}
-        width={8}
-        height={16}
-        rx={2}
-        vectorEffect="non-scaling-stroke"
-      />
-      <circle
-        className="glyph-dot"
-        cx={-6}
-        cy={-12}
-        r={4}
-        vectorEffect="non-scaling-stroke"
-      />
-      <path
-        className="glyph-flag"
-        d="M -12 18 L -20 14 L -12 10 Z"
-        vectorEffect="non-scaling-stroke"
-      />
-      <rect
-        className="glyph-notch"
-        x={-8}
-        y={6}
-        width={10}
-        height={6}
-        rx={2}
-        vectorEffect="non-scaling-stroke"
-      />
+      {dashed && (
+        <rect
+          className="glyph-outline"
+          x={-half}
+          y={-half}
+          width={GLYPH_SIZE}
+          height={GLYPH_SIZE}
+          rx={8}
+        />
+      )}
     </g>
   );
 }

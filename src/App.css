@@ -139,6 +139,7 @@
   fill: #f7f7f7;
   stroke: var(--ink);
   stroke-width: 2;
+  backdrop-filter: blur(4px);
 }
 
 .screen-line {
@@ -379,46 +380,31 @@
   fill: var(--muted);
 }
 
-.glyph-body,
-.glyph-wing,
-.glyph-dot,
-.glyph-flag,
-.glyph-notch {
-  stroke: currentColor;
-  stroke-width: 1.6;
-}
-
 .glyph-object {
   color: var(--accent-strong);
-}
-
-.glyph-object .glyph-body,
-.glyph-object .glyph-wing,
-.glyph-object .glyph-dot,
-.glyph-object .glyph-flag,
-.glyph-object .glyph-notch {
-  fill: #dbe9f6;
 }
 
 .glyph-image {
   color: var(--signal);
 }
 
-.glyph-image .glyph-body,
-.glyph-image .glyph-wing,
-.glyph-image .glyph-dot,
-.glyph-image .glyph-flag,
-.glyph-image .glyph-notch {
-  fill: #fdeaea;
+.glyph-image-el {
+  display: block;
 }
 
-.glyph.dashed .glyph-body,
-.glyph.dashed .glyph-wing,
-.glyph.dashed .glyph-dot,
-.glyph.dashed .glyph-flag,
-.glyph.dashed .glyph-notch {
+.glyph-object .glyph-image-el {
+  filter: saturate(1.05);
+}
+
+.glyph-image .glyph-image-el {
+  filter: saturate(1.1);
+}
+
+.glyph-outline {
   fill: none;
-  stroke-dasharray: 4 3;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-dasharray: 5 4;
 }
 
 .glyph.ghost {

@@ -22,3 +22,9 @@
 - [x] 像の観察を3カード構成に変更
 - [x] 非対称SVGと共通方眼・目盛り背景の実装
 - [x] lint/buildの実行
+
+## PNGプレースホルダー化
+- [x] プレースホルダーPNGを追加
+- [x] WipePanelのGlyphをPNGに置換
+- [x] 表示スタイル調整
+- [x] lint/buildの実行
