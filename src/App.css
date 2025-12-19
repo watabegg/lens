@@ -234,9 +234,28 @@
   color: var(--muted);
 }
 
-.range-value {
+.range-input {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-weight: 700;
   color: var(--accent-strong);
+}
+
+.range-input input {
+  width: 84px;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: #ffffff;
+  text-align: right;
+  font-weight: 600;
+  color: var(--accent-strong);
+}
+
+.range-input input:focus-visible {
+  outline: 3px solid rgba(31, 106, 165, 0.3);
+  outline-offset: 2px;
 }
 
 .toggle-row {
@@ -321,30 +340,89 @@
 }
 
 .wipe-visual {
-  min-height: 64px;
+  min-height: 160px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.mini-arrow {
-  width: 6px;
-  height: 40px;
-  background: var(--accent);
-  position: relative;
-  border-radius: 6px;
+.wipe-stage {
+  width: 100%;
+  height: 160px;
+  color: #d8d8d8;
 }
 
-.mini-arrow::after {
-  content: "";
-  position: absolute;
-  top: -10px;
-  left: -6px;
-  width: 0;
-  height: 0;
-  border-left: 9px solid transparent;
-  border-right: 9px solid transparent;
-  border-bottom: 10px solid var(--accent);
+.grid-bg {
+  fill: #ffffff;
+}
+
+.grid-line {
+  stroke: #efefef;
+}
+
+.grid-line.major {
+  stroke: #e0e0e0;
+}
+
+.grid-axis {
+  stroke: #d2d2d2;
+  stroke-width: 1;
+}
+
+.grid-ticks {
+  stroke: #cfcfcf;
+  stroke-width: 1;
+}
+
+.grid-note {
+  font-size: 12px;
+  fill: var(--muted);
+}
+
+.glyph-body,
+.glyph-wing,
+.glyph-dot,
+.glyph-flag,
+.glyph-notch {
+  stroke: currentColor;
+  stroke-width: 1.6;
+}
+
+.glyph-object {
+  color: var(--accent-strong);
+}
+
+.glyph-object .glyph-body,
+.glyph-object .glyph-wing,
+.glyph-object .glyph-dot,
+.glyph-object .glyph-flag,
+.glyph-object .glyph-notch {
+  fill: #dbe9f6;
+}
+
+.glyph-image {
+  color: var(--signal);
+}
+
+.glyph-image .glyph-body,
+.glyph-image .glyph-wing,
+.glyph-image .glyph-dot,
+.glyph-image .glyph-flag,
+.glyph-image .glyph-notch {
+  fill: #fdeaea;
+}
+
+.glyph.dashed .glyph-body,
+.glyph.dashed .glyph-wing,
+.glyph.dashed .glyph-dot,
+.glyph.dashed .glyph-flag,
+.glyph.dashed .glyph-notch {
+  fill: none;
+  stroke-dasharray: 4 3;
+}
+
+.glyph.ghost {
+  opacity: 0.4;
 }
 
 .focus-pill,

@@ -16,9 +16,9 @@ export interface AppState {
 }
 
 export const DEFAULT_STATE: AppState = {
-  objectDistanceCm: 30,
-  screenDistanceCm: 20,
-  focalLengthCm: 10,
+  objectDistanceCm: 40,
+  screenDistanceCm: 40,
+  focalLengthCm: 20,
 
   viewMode: "simple",
   showRays: true,

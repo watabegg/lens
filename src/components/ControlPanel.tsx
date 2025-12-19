@@ -1,10 +1,7 @@
 import type { AppState, ViewMode } from "../state";
-import type { LensResult } from "../physics/lens";
-import FormulaView from "./FormulaView";
 
 interface ControlPanelProps {
   state: AppState;
-  lensResult: LensResult;
   onChange: (partial: Partial<AppState>) => void;
   onViewModeChange: (mode: ViewMode) => void;
   onReset: () => void;
@@ -21,6 +18,9 @@ interface RangeFieldProps {
   onChange: (value: number) => void;
 }
 
+const clampNumber = (value: number, min: number, max: number) =>
+  Math.max(min, Math.min(max, value));
+
 const RangeField = ({
   label,
   value,
@@ -30,31 +30,59 @@ const RangeField = ({
   unit,
   hint,
   onChange,
-}: RangeFieldProps) => (
-  <div className="range-field">
-    <div className="range-header">
-      <div>
-        <div className="range-label">{label}</div>
-        {hint && <div className="range-hint">{hint}</div>}
+}: RangeFieldProps) => {
+  const handleNumberChange = (raw: string) => {
+    if (raw === "") return;
+    const next = Number(raw);
+    if (Number.isNaN(next)) return;
+    onChange(clampNumber(next, min, max));
+  };
+
+  const handleNumberBlur = (raw: string) => {
+    if (raw === "") {
+      onChange(min);
+      return;
+    }
+    const next = Number(raw);
+    if (Number.isNaN(next)) return;
+    onChange(clampNumber(next, min, max));
+  };
+
+  return (
+    <div className="range-field">
+      <div className="range-header">
+        <div>
+          <div className="range-label">{label}</div>
+          {hint && <div className="range-hint">{hint}</div>}
+        </div>
+        <div className="range-input">
+          <input
+            type="number"
+            min={min}
+            max={max}
+            step={step}
+            value={value}
+            onChange={(event) => handleNumberChange(event.target.value)}
+            onBlur={(event) => handleNumberBlur(event.target.value)}
+            aria-label={`${label} を入力`}
+          />
+          <span>{unit}</span>
+        </div>
       </div>
-      <div className="range-value">
-        {value.toFixed(1)} {unit}
-      </div>
+      <input
+        type="range"
+        min={min}
+        max={max}
+        step={step}
+        value={value}
+        onChange={(event) => onChange(Number(event.target.value))}
+      />
     </div>
-    <input
-      type="range"
-      min={min}
-      max={max}
-      step={step}
-      value={value}
-      onChange={(event) => onChange(Number(event.target.value))}
-    />
-  </div>
-);
+  );
+};
 
 export default function ControlPanel({
   state,
-  lensResult,
   onChange,
   onViewModeChange,
   onReset,
@@ -82,7 +110,7 @@ export default function ControlPanel({
         label="物体距離 (a)"
         value={state.objectDistanceCm}
         min={5}
-        max={50}
+        max={100}
         step={0.5}
         unit="cm"
         hint="物体からレンズ"
@@ -92,7 +120,7 @@ export default function ControlPanel({
         label="スクリーン距離"
         value={state.screenDistanceCm}
         min={5}
-        max={50}
+        max={100}
         step={0.5}
         unit="cm"
         hint="スクリーンからレンズ"
@@ -102,27 +130,11 @@ export default function ControlPanel({
         label="焦点距離 (f)"
         value={state.focalLengthCm}
         min={5}
-        max={30}
+        max={100}
         step={0.5}
         unit="cm"
         hint="凸レンズ"
         onChange={(value) => onChange({ focalLengthCm: value })}
-      />
-
-      <div className="toggle-row">
-        <button
-          type="button"
-          className={state.showRays ? "toggle active" : "toggle"}
-          onClick={() => onChange({ showRays: !state.showRays })}
-        >
-          {state.showRays ? "主光線を隠す" : "主光線を表示"}
-        </button>
-      </div>
-
-      <FormulaView
-        viewMode={state.viewMode}
-        state={state}
-        lensResult={lensResult}
       />
 
       <div className="reset-row">

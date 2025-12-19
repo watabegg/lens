@@ -7,8 +7,6 @@ import WipePanel from "./components/WipePanel";
 import ControlPanel from "./components/ControlPanel";
 import MobileTabBar from "./components/MobileTabBar";
 
-const viewModeLabel = (mode: ViewMode) => (mode === "simple" ? "シンプル" : "詳細");
-
 function App() {
   const [state, setState] = useState<AppState>(DEFAULT_STATE);
   const { lensResult, imageDescriptor } = useLensPhysics(state);
@@ -31,27 +29,6 @@ function App() {
 
   return (
     <div className="app-shell" data-active-tab={state.activeTab}>
-      <header className="app-header">
-        <div>
-          <p className="app-eyebrow">凸レンズ実験</p>
-          <h1 className="app-title">凸レンズラボ</h1>
-          <p className="app-subtitle">
-            物体距離・スクリーン距離・焦点距離を動かして像の変化を観察しよう。
-          </p>
-        </div>
-        <div className="app-status">
-          <div className="status-item">
-            <span className="status-label">モード</span>
-            <span className="status-value">{viewModeLabel(state.viewMode)}</span>
-          </div>
-          <div className="status-item">
-            <span className="status-label">ピント</span>
-            <span className="status-value">
-              {lensResult.isImageOnScreen ? "合焦" : "ぼけ"}
-            </span>
-          </div>
-        </div>
-      </header>
 
       <main className="app-main">
         <section
@@ -77,7 +54,6 @@ function App() {
           </div>
           <ControlPanel
             state={state}
-            lensResult={lensResult}
             onChange={updateState}
             onViewModeChange={handleViewModeChange}
             onReset={handleReset}
